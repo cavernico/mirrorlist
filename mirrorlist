@@ -1,0 +1,24 @@
+#!/bin/bash
+
+
+##Solo Chile
+chile()
+{
+curl -s "https://www.archlinux.org/mirrorlist/?country=CL&protocol=http&protocol=https&ip_version=4" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -nv 6 - > /etc/pacman.d/mirrorlist
+}
+
+
+##Todo el mundo
+todos()
+{
+curl -s "https://www.archlinux.org/mirrorlist/all/" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -nv 6 - > /etc/pacman.d/mirrorlist
+}
+
+echo "chile o todos?"
+read  pais
+echo "Descargando mirrors..."
+if [[ $pais = "chile" ]] 
+	then chile
+elif [[ $pais = "todos" ]]
+	then todos
+fi
