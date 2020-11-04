@@ -1,5 +1,5 @@
 #Maintainer: Nicolas Olmedo <ganjador@gmail.com>
-
+#
 pkgname=mirrorlist
 pkgver=1
 pkgdesc="Update mirrorlist for archlinux servers shit"
